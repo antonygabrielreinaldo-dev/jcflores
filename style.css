@@ -121,7 +121,7 @@ aside h3 { margin: 0; font-weight: 600; }
 .q button { border: 0; background: none; color: inherit; width: 28px; height: 28px; font-size: 16px; }
 .q span { min-width: 22px; text-align: center; font-weight: 500; }
 .rm { border: 0; background: none; color: var(--mute); font-size: 12px; text-decoration: underline; display: block; margin-left: auto; }
-.foot { max-height: 62vh; overflow: auto; padding: 14px 18px 18px; border-top: 1px solid var(--line); display: grid; gap: 10px; font-size: 14px; }
+.foot { max-height: 72vh; overflow: auto; padding: 14px 18px 18px; border-top: 1px solid var(--line); display: grid; gap: 10px; font-size: 14px; }
 .foot textarea, .foot select, .foot input[type=date] { width: 100%; border: 1px solid var(--line); border-radius: 12px; padding: 9px 12px; font: inherit; background: var(--bg); color: var(--fg); resize: none; }
 .row { display: flex; justify-content: space-between; }
 .row.tot { font-size: 1.2rem; font-weight: 600; color: var(--pk2); }
@@ -1270,3 +1270,226 @@ footer .logo-img img{height:76px}
 .rm .rc blockquote{margin:0;font-style:normal;font-size:14px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
 @media(max-width:600px){.rm .rc{width:260px}}
 @media(prefers-reduced-motion:reduce){.rm{overflow-x:auto;-webkit-mask-image:none;mask-image:none}.rm-t{animation:none}.rm-t .rc[aria-hidden]{display:none}}
+
+/* faixa do topo e formulário do pedido */
+.top{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 10px;font-weight:500}
+.top .sep{opacity:.5}
+@media(max-width:700px){.top .sep{display:none}.top{white-space:normal!important;font-size:11.5px!important;gap:2px 12px}.top span:last-child{display:none}}
+.foot input[type=text],.foot input[type=tel]{width:100%;border:1px solid var(--line);border-radius:12px;padding:9px 12px;font:inherit;background:var(--bg);color:var(--fg)}
+.foot .fs{margin:6px 0 0;font:600 13px/1.2 inherit;letter-spacing:.04em;text-transform:uppercase;color:var(--pk)}
+.foot .rcv{display:grid;gap:10px}
+.foot .hint{color:var(--mute);font-size:12px;line-height:1.4}
+.foot .aviso{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:12px;line-height:1.45;color:var(--fg)}
+.foot .aviso p{margin:0 0 6px}.foot .aviso p:last-child{margin:0}
+.foot{align-content:start}
+.foot textarea{min-height:64px}
+.foot input,.foot select,.foot textarea{flex-shrink:0}
+/* ===== Banner principal (hero) ===== */
+.main{background:radial-gradient(120% 140% at 85% 20%,#B31E56 0%,#8A1642 45%,#4a0b26 100%);min-height:360px;padding:clamp(28px,5vw,64px);justify-content:center;box-shadow:0 18px 40px -18px rgba(74,11,38,.55)}
+.hb-copy{position:relative;z-index:3;max-width:min(52%,520px)}
+.hb-eyebrow{display:inline-block;font:500 .78rem/1 "Cormorant Garamond",Georgia,serif;letter-spacing:.32em;text-transform:uppercase;color:#f6c9d9;padding-bottom:12px;margin-bottom:14px;border-bottom:1px solid rgba(246,201,217,.35)}
+.main .hb-copy h1{font:400 clamp(2.7rem,6vw,4.9rem)/1.02 var(--script);margin:0 0 14px;text-shadow:0 2px 18px rgba(40,5,22,.35)}
+.main .hb-copy h1 em{font-style:normal;color:#ffc7da}
+.main .hb-copy p{max-width:32ch;margin:0 0 26px;font-size:1.08rem;line-height:1.55;color:#fbe7ef}
+.hb-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.main .btn{padding:14px 30px;box-shadow:0 10px 24px -8px rgba(30,3,16,.55)}
+.main .btn:hover{transform:translateY(-2px);box-shadow:0 14px 28px -8px rgba(30,3,16,.65)}
+.hb-note{font-size:.82rem;color:#f6c9d9;letter-spacing:.02em}
+.hb-glow{position:absolute;right:-6%;top:50%;width:62%;aspect-ratio:1;translate:0 -50%;border-radius:50%;background:radial-gradient(circle,rgba(255,196,216,.5) 0%,rgba(255,196,216,.12) 42%,transparent 68%);z-index:0;pointer-events:none}
+.hb-ring{position:absolute;top:50%;border-radius:50%;pointer-events:none;z-index:1;aspect-ratio:1;translate:0 -50%}
+.hb-ring.r1{right:8%;width:min(46%,400px);border:1px solid rgba(255,255,255,.22)}
+.hb-ring.r2{right:3%;width:min(56%,490px);border:1px dashed rgba(255,255,255,.16);animation:hbspin 60s linear infinite}
+@keyframes hbspin{to{rotate:360deg}}
+.hb-rose{position:absolute;right:calc(8% + min(46%,400px)/2 - min(36%,330px)/2);top:50%;width:min(36%,330px);height:auto;z-index:2;translate:0 -50%;filter:drop-shadow(0 22px 28px rgba(30,3,16,.5)) drop-shadow(0 0 30px rgba(255,190,214,.35));animation:hbfloat 6s ease-in-out infinite alternate;pointer-events:none}
+@keyframes hbfloat{from{translate:0 calc(-50% - 8px);rotate:-3deg}to{translate:0 calc(-50% + 8px);rotate:3deg}}
+.hb-petal{position:absolute;top:-24px;left:var(--l);width:13px;height:17px;border-radius:70% 0 70% 0;background:linear-gradient(135deg,#ffd3e2,#e0709b);opacity:.75;z-index:1;pointer-events:none;animation:hbfall var(--d) linear var(--s) infinite}
+@keyframes hbfall{0%{transform:translate3d(0,0,0) rotate(0)}100%{transform:translate3d(-40px,420px,0) rotate(480deg);opacity:0}}
+@media(max-width:860px){.hb-copy{max-width:56%}}
+@media(max-width:600px){
+ .main{min-height:340px;padding:26px 20px 28px;justify-content:flex-end}
+ .hb-copy{max-width:100%}
+ .hb-eyebrow{font-size:.68rem;letter-spacing:.24em}
+ .main .hb-copy h1{font-size:clamp(2.5rem,13vw,3.4rem);max-width:9em}
+ .main .hb-copy p{font-size:.98rem;max-width:26ch;margin-bottom:20px}
+ .main{min-height:430px;padding-top:190px}
+ .hb-glow{width:90%;right:-20%;top:2%;translate:0 0}
+ .hb-ring{top:18px;translate:0 0}.hb-ring.r1{width:46%;right:6%}.hb-ring.r2{width:58%;right:0}
+ .hb-rose{width:34%;right:12%;top:36px;translate:0 0;animation:hbfloatm 6s ease-in-out infinite alternate}
+}
+@keyframes hbfloatm{from{translate:0 -6px;rotate:-3deg}to{translate:0 6px;rotate:3deg}}
+#logo3d {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Permanece atrás dos textos, pois .main h1 e p têm z-index: 2 */
+  pointer-events: none; /* Impede que o canvas invisível bloqueie cliques no botão e na interação */
+}
+
+/* Banner “Flores que falam por você”: foto no lugar do fundo rosa.
+   Para trocar a imagem, substitua images/banner-flores.jpg. */
+.hero .main {
+  background: linear-gradient(90deg, rgba(23, 12, 15, .75) 0%, rgba(31, 17, 19, .52) 41%, rgba(31, 17, 19, .07) 100%),
+              url('images/banner-flores.jpg') center center / cover no-repeat;
+  color: #fff;
+}
+.hero .main h1, .hero .main p {
+  text-shadow: 0 2px 12px rgba(0, 0, 0, .5);
+}
+/* Mantém a foto visível caso o efeito 3D esteja ativo. */
+.hero .main #logo3d { display: none; }
+@media (max-width: 600px) {
+  .hero .main {
+    background-position: 63% center;
+    background-image: linear-gradient(90deg, rgba(22, 12, 14, .82), rgba(22, 12, 14, .33)),
+                      url('images/banner-flores.jpg');
+  }
+}
+
+/* ================================================================
+   INÍCIO JC FLORES — MODELO DA FOTO ENVIADA
+   Para escolher as fotos, coloque estes arquivos em /images:
+   banner-principal.jpg  (buquê de rosas, imagem grande)
+   presentes-especiais.jpg  (caixa de presente, cartão superior)
+   girassois-banner.jpg  (girassóis, cartão inferior)
+   Troque somente os nomes nas URLs abaixo caso prefira outros.
+   ================================================================ */
+.jc-hero {grid-template-columns: minmax(0, 2.15fr) minmax(270px, .94fr);gap:20px;margin:24px 0 28px;align-items:stretch}
+.jc-hero .jc-banner {position:relative;display:flex;justify-content:center;align-items:flex-start;min-height:440px;overflow:hidden;padding:clamp(28px,4.5vw,58px);border-radius:28px;background:linear-gradient(90deg,rgba(20,12,10,.78) 0%,rgba(30,20,16,.52) 43%,rgba(30,20,16,.03) 78%),url('images/banner-principal.jpg') center / cover no-repeat;background-color:#6b3d3d;color:#fff;box-shadow:none;transform:none}
+.jc-hero .jc-banner::before {display:none}
+.jc-banner-copy {position:relative;z-index:2;max-width:66%;margin-right:auto}
+.jc-banner-copy h1,.jc-hero .jc-banner h1 {font:400 clamp(3.1rem,5.1vw,5.5rem)/.95 var(--script);color:white;margin:0 0 24px;text-shadow:0 3px 13px rgba(0,0,0,.35)}
+.jc-banner-copy p,.jc-hero .jc-banner p {font-size:clamp(1rem,1.45vw,1.2rem);line-height:1.55;color:#fff;max-width:34ch;margin:0 0 28px;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+.jc-hero .jc-banner .jc-banner-btn {display:inline-flex;gap:18px;align-items:center;justify-content:center;padding:13px 28px;background:#fff;color:#9b103e;font-weight:700;border-radius:999px;text-shadow:none;box-shadow:0 7px 18px rgba(0,0,0,.18)}
+.jc-banner-btn span{font-size:1.5rem;line-height:1}
+.jc-side {display:grid;grid-template-rows:repeat(2,minmax(0,1fr));gap:20px}
+.jc-side .jc-tile {min-height:210px;border-radius:27px;display:flex;align-items:flex-start;justify-content:center;padding:30px 26px;gap:10px;isolation:isolate;transform:none}
+.jc-side .jc-tile::before {content:"";position:absolute;inset:0;z-index:-1;opacity:1;pointer-events:none;background:linear-gradient(90deg,rgba(255,223,230,.95) 0%,rgba(255,223,230,.7) 48%,transparent 85%)}
+.jc-side .jc-tile-gifts {background:#f3b5c5 url('images/presentes-especiais.jpg') center / cover no-repeat;color:#8b123c}
+.jc-side .jc-tile-sun {background:#ffe8c8 url('images/girassois-banner.jpg') center / cover no-repeat;color:#8b123c}
+.jc-side .jc-tile-sun::before {background:linear-gradient(90deg,rgba(255,237,207,.95),rgba(255,237,207,.7) 51%,transparent 85%)}
+.jc-side .jc-tile b{font:600 clamp(1.8rem,2.5vw,2.6rem)/.98 'Cormorant Garamond',Georgia,serif;max-width:66%;position:relative;z-index:1}
+.jc-side .jc-tile span{font-size:clamp(.85rem,1.2vw,1.03rem);font-weight:400;line-height:1.35;opacity:1;color:#2b1a24;position:relative;z-index:1}
+.jc-side .jc-tile:hover {transform:translateY(-3px)}
+.jc-perks {grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:30px}
+.jc-perks > div {display:flex;gap:14px;align-items:center;min-height:90px;border:1px solid #f0d2dc;border-radius:24px;padding:18px;background:#fffbfc;color:#24171c}
+.jc-perks .ic{width:38px;height:38px;color:#a90d45;flex-shrink:0}
+.jc-perks strong,.jc-perks small{display:block;line-height:1.25}
+.jc-perks strong{font-size:14px;font-weight:700}
+.jc-perks small{font-size:13px;margin-top:4px;color:#3d2c33}
+@media(max-width:900px){
+ .jc-hero{grid-template-columns:1fr;gap:14px}
+ .jc-side{grid-template-columns:1fr 1fr;grid-template-rows:auto;gap:14px}
+ .jc-side .jc-tile{min-height:180px}
+ .jc-perks{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:600px){
+ .jc-hero{margin:14px 0;gap:12px}
+ .jc-hero .jc-banner {min-height:390px;padding:30px 22px;justify-content:flex-end;background-position:62% center}
+ .jc-banner-copy{max-width:100%}
+ .jc-banner-copy h1,.jc-hero .jc-banner h1{font-size:clamp(2.9rem,11vw,4rem);max-width:10ch}
+ .jc-banner-copy p,.jc-hero .jc-banner p{font-size:.96rem;max-width:26ch}
+ .jc-side{grid-template-columns:1fr;grid-template-rows:auto}
+ .jc-side .jc-tile{min-height:160px;padding:22px}
+ .jc-side .jc-tile b{font-size:2.1rem}
+ .jc-perks{gap:10px}
+ .jc-perks > div{padding:12px;min-height:78px;gap:9px;border-radius:16px}
+ .jc-perks .ic{width:27px;height:27px}
+ .jc-perks strong{font-size:12px}
+ .jc-perks small{font-size:11px}
+}
+
+/* =====================================================
+   MARCA NO CABEÇALHO (nome da loja, sem logo)
+   ===================================================== */
+.brand{display:flex;flex-direction:column;align-items:flex-start;gap:7px;line-height:1;color:#fff;flex:none}
+.brand-n{font:600 1.7rem/1 "Cormorant Garamond",Georgia,serif;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap}
+.brand-s{font:500 8.5px/1 var(--sans);letter-spacing:.42em;text-transform:uppercase;color:#F9E3EC;white-space:nowrap}
+@media (min-width:701px){.hr .brand{justify-self:start}}
+@media (max-width:600px){.brand{gap:5px}.brand-n{font-size:1.25rem;letter-spacing:.16em}.brand-s{font-size:6.5px;letter-spacing:.3em}}
+footer .brand-n{font-size:1.9rem}
+footer .brand{margin-bottom:12px}
+
+/* =====================================================
+   HERO: moldura fina, selo, destaque e botões
+   ===================================================== */
+.jc-hero .jc-banner{background:linear-gradient(98deg,rgba(66,5,30,.9) 0%,rgba(122,14,60,.62) 44%,rgba(122,14,60,.05) 82%),url('images/banner-principal.jpg') center / cover no-repeat;background-color:#7a0e3c;box-shadow:0 30px 60px -34px rgba(90,8,42,.55)}
+.jc-hero .jc-banner::after{content:"";position:absolute;inset:14px;border:1px solid rgba(255,255,255,.22);border-radius:20px;pointer-events:none}
+.jc-banner-copy{--e:cubic-bezier(0.23,1,0.32,1);max-width:76%}
+@media (max-width:640px){.jc-banner-copy{max-width:100%}}
+.jc-eyebrow{display:inline-flex;align-items:center;gap:10px;margin:0 0 20px;padding:9px 16px 9px 14px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font:500 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:#fff}
+.jc-eyebrow i{width:7px;height:7px;border-radius:50%;background:#ff8fb6;box-shadow:0 0 0 4px rgba(255,143,182,.28)}
+.jc-banner-copy h1 em{font-style:normal;color:#ffd3e2}
+.jc-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.jc-hero .jc-banner .jc-banner-btn{display:inline-flex;align-items:center;gap:18px;padding:7px 7px 7px 30px;border-radius:999px;background:linear-gradient(135deg,#fff 0%,#fde6ee 100%);color:#8A1642;text-shadow:none;box-shadow:0 16px 30px -12px rgba(40,0,18,.7),inset 0 0 0 1px rgba(255,255,255,.7);transition:transform .2s var(--e),box-shadow .25s var(--e)}
+.jc-hero .jc-banner .jc-banner-btn .jc-ar{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--pk);color:#fff;font-size:inherit;transition:transform .3s var(--e),background .2s}
+.jc-ar svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.jc-hero .jc-banner .jc-banner-btn .jc-bt{font:600 1.12rem/1 "Cormorant Garamond",Georgia,serif;letter-spacing:.14em;text-transform:uppercase;padding-top:1px;white-space:nowrap}
+.jc-hero .jc-banner .jc-banner-btn::before{content:"";position:absolute;inset:0;border-radius:inherit;background:rgba(255,255,255,.6);opacity:0;z-index:-1;pointer-events:none;animation:jc-pulse 2.2s var(--e) 1.8s infinite}
+.jc-hero .jc-banner .jc-banner-btn .jc-ar{animation:jc-nudge 2.2s ease-in-out 1.8s infinite}
+@keyframes jc-pulse{0%{opacity:.65;transform:scale(1)}70%,100%{opacity:0;transform:scale(1.22,1.7)}}
+@keyframes jc-nudge{0%,60%,100%{transform:translateX(0)}30%{transform:translateX(4px)}}
+.jc-hero .jc-banner .jc-banner-btn:active{transform:scale(.97)}
+.jc-ghost{white-space:nowrap;display:inline-flex;align-items:center;padding:15px 24px;border-radius:999px;border:1px solid rgba(255,255,255,.55);background:rgba(255,255,255,.08);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;font-weight:500;font-size:.95rem;letter-spacing:.02em;text-shadow:none;transition:background .2s,transform .2s var(--e)}
+.jc-ghost:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){
+  .jc-hero .jc-banner .jc-banner-btn:hover{transform:translateY(-2px);box-shadow:0 22px 34px -12px rgba(40,0,18,.75),inset 0 0 0 1px #fff}
+  .jc-hero .jc-banner .jc-banner-btn:hover .jc-ar{background:var(--pk2)}
+  .jc-ghost:hover{background:rgba(255,255,255,.2)}
+}
+/* entrada do texto do hero quando a tela de carregamento abre */
+.jc-banner-copy>*{transition:opacity .9s var(--e) calc(.25s + var(--k,0)*.12s),transform .9s var(--e) calc(.25s + var(--k,0)*.12s)}
+.jc-banner-copy>:nth-child(2){--k:1}.jc-banner-copy>:nth-child(3){--k:2}.jc-banner-copy>:nth-child(4){--k:3}.jc-banner-copy>:nth-child(5){--k:4}
+html.ld-wait .jc-banner-copy>*{opacity:0;transform:translateY(18px)}
+@media (max-width:640px){.jc-hero .jc-banner::after{inset:10px;border-radius:16px}.jc-cta{gap:10px}.jc-ghost{padding:13px 20px}}
+
+/* =====================================================
+   TELA DE CARREGAMENTO · JC Flores
+   (rosa claro, logo em círculo pulsando; uma vez por sessão)
+   ===================================================== */
+html.ld-lock{overflow:hidden}
+.ld-off #ld{display:none}
+#ld{--e:cubic-bezier(0.23,1,0.32,1);--io:cubic-bezier(0.77,0,0.175,1);position:fixed;inset:0;z-index:1000;overflow:hidden;color:#8A1642;font-family:var(--sans)}
+#ld.ld-out{pointer-events:none}
+
+.ld-p{position:absolute;left:0;right:0;height:50.3%;background:#f9e1ea;transition:transform .85s var(--io) .3s;will-change:transform}
+.ld-pt{top:0}.ld-pb{bottom:0}
+#ld.ld-out .ld-pt{transform:translateY(-100%)}
+#ld.ld-out .ld-pb{transform:translateY(100%)}
+
+.ld-vig{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse at center,rgba(255,255,255,.55) 0,rgba(255,255,255,0) 50%,rgba(232,160,186,.38) 100%);transition:opacity .3s var(--e)}
+
+.ld-fl{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;transition:opacity .3s var(--e)}
+.ld-fl i{position:absolute;top:-30px;left:var(--x);width:14px;height:18px;border-radius:70% 0 70% 0;background:#b31e56;opacity:0;scale:var(--s);animation:ld-fall var(--d) linear var(--w) infinite}
+@keyframes ld-fall{0%{opacity:0;transform:translate3d(0,0,0) rotate(0)}8%{opacity:var(--o)}92%{opacity:var(--o)}100%{opacity:0;transform:translate3d(var(--dx),112vh,0) rotate(540deg)}}
+@media (max-width:700px){.ld-fl i:nth-child(n+10){display:none}}
+
+.ld-c{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:0 24px;text-align:center;transition:opacity .3s var(--e),transform .3s var(--e)}
+#ld.ld-out .ld-c{opacity:0;transform:translateY(-14px)}
+#ld.ld-out .ld-vig,#ld.ld-out .ld-fl,#ld.ld-out .ld-foot{opacity:0}
+
+.ld-mark{position:relative;width:min(52vw,200px);aspect-ratio:1;animation:ld-in 1.5s var(--e) .3s backwards}
+.ld-disc{position:absolute;inset:0;border-radius:50%;background:#b31e56;display:grid;place-items:center;overflow:hidden;box-shadow:0 18px 40px -14px rgba(138,22,66,.55),0 0 0 7px rgba(255,255,255,.7);animation:ld-pulse 2.6s ease-in-out 1.8s infinite}
+.ld-disc img{display:block;width:80%;height:80%}
+@keyframes ld-in{from{opacity:0;transform:translateY(14px) scale(.94)}}
+@keyframes ld-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+.ld-ring{position:absolute;inset:-6%;border-radius:50%;border:1px solid rgba(179,30,86,.5);opacity:0;animation:ld-ripple 3.6s var(--e) 1.6s infinite;pointer-events:none}
+.ld-ring.r2{animation-delay:3.4s}
+@keyframes ld-ripple{0%{opacity:.7;transform:scale(.96)}100%{opacity:0;transform:scale(1.6)}}
+
+.ld-tag{margin:0;font-family:var(--script);font-size:clamp(28px,7vw,38px);line-height:1.15;color:#8A1642;animation:ld-rise 1s var(--e) 1.5s backwards}
+@keyframes ld-rise{from{opacity:0;transform:translateY(10px)}}
+
+.ld-prog{display:flex;flex-direction:column;align-items:center;gap:12px;animation:ld-rise 1s var(--e) 1.9s backwards}
+.ld-line{width:min(52vw,190px);height:1px;background:rgba(138,22,66,.22);overflow:hidden}
+.ld-line span{display:block;height:100%;background:#b31e56;transform-origin:left;transform:scaleX(0)}
+.ld-num{font:600 20px/1 "Cormorant Garamond",Georgia,serif;letter-spacing:.14em;font-variant-numeric:lining-nums tabular-nums;color:#8A1642;min-width:4ch;text-align:center}
+
+.ld-foot{position:absolute;z-index:2;left:0;right:0;bottom:clamp(22px,5vh,44px);margin:0;text-align:center;font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:rgba(138,22,66,.7);animation:ld-rise 1s var(--e) 2.3s backwards;transition:opacity .3s var(--e)}
+
+@media (prefers-reduced-motion:reduce){
+  #ld,#ld *{transition-duration:.35s!important}
+  #ld.ld-out .ld-p{transform:none!important}
+  #ld.ld-out{opacity:0}
+  #ld{transition-property:opacity!important}
+}

@@ -3,20 +3,94 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>(function(){var d=document.documentElement;try{if(sessionStorage.getItem('jc-ld')){d.classList.add('ld-off');return}}catch(e){}d.classList.add('ld-lock','ld-wait')})()</script>
+<noscript><style>#ld{display:none!important}html.ld-lock{overflow:auto!important}html.ld-wait .jc-banner-copy>*{opacity:1!important;transform:none!important}</style></noscript>
 <title>JC Flores · Floricultura & Presentes em Manaus</title>
-<meta name="description" content="Floricultura 24 horas em Manaus: buquês, coroas, cestas e presentes. Entrega grátis acima de R$ 99.">
+<meta name="description" content="Floricultura 24 horas em Manaus: buquês, coroas, cestas e presentes. Entrega grátis acima de R$ 100.">
 <meta property="og:title" content="JC Flores">
 <meta property="og:description" content="Flores frescas, buquês e arranjos com entrega rápida e muito carinho.">
 <meta property="og:image" content="images/logo.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" href="images/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css">
 <script src="script.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script src="logo3d.js" defer></script>
 <script src="admin.js" defer></script>
 </head>
 <body>
+<div id="ld" role="status" aria-live="polite" aria-label="Carregando a JC Flores">
+  <div class="ld-p ld-pt"></div><div class="ld-p ld-pb"></div>
+  <div class="ld-vig"></div>
+  <div class="ld-fl" aria-hidden="true"><i style="--x:2.8%;--s:1.1;--d:15.5s;--w:-5.6s;--dx:1px;--o:0.48"></i><i style="--x:7.7%;--s:1.06;--d:13.4s;--w:-9.5s;--dx:-65px;--o:0.39"></i><i style="--x:13.4%;--s:1.33;--d:13.9s;--w:-0.5s;--dx:77px;--o:0.59"></i><i style="--x:21.6%;--s:1.15;--d:10.1s;--w:-0.2s;--dx:5px;--o:0.32"></i><i style="--x:25.8%;--s:0.82;--d:9.2s;--w:-5.6s;--dx:-10px;--o:0.55"></i><i style="--x:33.1%;--s:1.18;--d:12.5s;--w:-7.9s;--dx:-7px;--o:0.38"></i><i style="--x:41.0%;--s:1.5;--d:14.9s;--w:-8.5s;--dx:-30px;--o:0.37"></i><i style="--x:44.2%;--s:0.66;--d:14.4s;--w:-4.8s;--dx:55px;--o:0.42"></i><i style="--x:52.8%;--s:1.36;--d:9.0s;--w:-2.5s;--dx:66px;--o:0.44"></i><i style="--x:58.9%;--s:0.96;--d:9.5s;--w:-7.6s;--dx:45px;--o:0.38"></i><i style="--x:61.3%;--s:0.9;--d:15.7s;--w:-9.1s;--dx:-61px;--o:0.37"></i><i style="--x:67.4%;--s:0.65;--d:14.6s;--w:-2.1s;--dx:9px;--o:0.43"></i><i style="--x:73.8%;--s:1.26;--d:9.9s;--w:-7.7s;--dx:-61px;--o:0.43"></i><i style="--x:79.9%;--s:0.84;--d:15.8s;--w:-9.6s;--dx:-31px;--o:0.57"></i><i style="--x:85.8%;--s:0.95;--d:15.0s;--w:-7.7s;--dx:-64px;--o:0.6"></i><i style="--x:91.9%;--s:0.83;--d:14.4s;--w:-3.9s;--dx:-33px;--o:0.32"></i></div>
+  <div class="ld-c">
+    <div class="ld-mark" aria-hidden="true">
+      <span class="ld-ring"></span><span class="ld-ring r2"></span>
+      <div class="ld-disc"><img src="images/logo.jpg" alt="" width="150" height="150" decoding="async"></div>
+    </div>
+    <p class="ld-tag">Flores que falam por você</p>
+    <div class="ld-prog" aria-hidden="true">
+      <div class="ld-line"><span id="ld-bar"></span></div>
+      <div class="ld-num"><span id="ld-num">0</span>%</div>
+    </div>
+  </div>
+  <p class="ld-foot" aria-hidden="true">Floricultura 24 horas · Manaus</p>
+</div>
+<script>
+(function () {
+  var ld = document.getElementById('ld');
+  if (!ld) return;
+  var d = document.documentElement;
+  if (d.classList.contains('ld-off')) { ld.parentNode.removeChild(ld); return; }
+
+  var num = document.getElementById('ld-num'), bar = document.getElementById('ld-bar');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DUR = reduce ? 700 : 4600;     // tempo mínimo de exibição (ms) — aumente para durar mais
+  var FAILSAFE = 9000;               // nunca prende o visitante além disso
+  var t0 = performance.now(), loaded = false, fonts = false, ready = false, p = 0, last = -1, done = false;
+
+  function check() { if (loaded && fonts) ready = true; }
+  if (document.readyState === 'complete') loaded = true;
+  else window.addEventListener('load', function () { loaded = true; check(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fonts = true; check(); });
+  else fonts = true;
+  check();
+  setTimeout(function () { ready = true; }, FAILSAFE);
+  setTimeout(function () { d.classList.remove('ld-wait'); }, FAILSAFE + 4000);
+
+  function ease(x) { return x < .5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2; }
+
+  function finish() {
+    if (done) return; done = true;
+    num.textContent = '100'; bar.style.transform = 'scaleX(1)';
+    setTimeout(function () {
+      ld.classList.add('ld-out');
+      d.classList.remove('ld-wait');
+      ld.setAttribute('aria-busy', 'false');
+      try { sessionStorage.setItem('jc-ld', '1'); } catch (e) {}
+      setTimeout(function () {
+        if (ld.parentNode) ld.parentNode.removeChild(ld);
+        d.classList.remove('ld-lock');
+      }, reduce ? 450 : 1350);
+    }, 450);
+  }
+
+  function tick(now) {
+    var e = Math.min((now - t0) / DUR, 1);
+    var want = Math.min(ready ? 100 : 92, ease(e) * 100);
+    p += (want - p) * 0.16;
+    if (want - p < 0.05) p = want;
+    var n = Math.round(p);
+    if (n !== last) { last = n; num.textContent = n; }
+    bar.style.transform = 'scaleX(' + (p / 100) + ')';
+    if (ready && e >= 1 && p >= 99.5) { finish(); return; }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
+
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
 <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h11v10H2zM13 9h4l3 3v4h-7"/><circle cx="6.5" cy="18" r="1.8"/><circle cx="16.5" cy="18" r="1.8"/></symbol>
 <symbol id="i-card" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6 15h4"/></symbol>
@@ -48,8 +122,9 @@
 </a>
 
 <div class="stk">
+<div class="top" id="tp"><span> ⛟ Pedidos acima de R$ 100: <b>frete grátis</b> em Manaus</span><span class="sep">·</span><span> ✉ <b>Cartão com mensagem grátis</b></span><span class="sep">·</span><span> ⏱ Atendimento 24 horas</span></div>
 <header><div class="w hr">
-<a class="logo logo-img" href="#top" aria-label="JC Flores Floricultura"><img src="images/logo.jpg" alt="JC Flores Floricultura" width="64" height="64"></a>
+<a class="brand" href="#top" aria-label="JC Flores · Floricultura"><span class="brand-n">JC Flores</span><span class="brand-s">Floricultura · 24h</span></a>
 <form class="sr" id="sf" role="search"><input id="q" type="search" placeholder="Pesquisar flores, buquês, plantas…" aria-label="Pesquisar"><button type="submit" aria-label="Buscar"><svg class="ic"><use href="#i-search"/></svg></button></form>
 <button class="ct" id="oc" aria-label="Abrir carrinho"><svg class="ic"><use href="#i-bag"/></svg> <em id="cn">0</em></button>
 </div></header>
@@ -57,24 +132,157 @@
 </div>
 
 <main class="w">
-<div class="hero">
-<div class="main rv tilt"><h1>Flores que falam por você</h1><p>Buquês, arranjos e presentes com entrega rápida e muito carinho.</p><a class="btn" href="#loja" data-cat="Todas">Ver produtos</a><i class="b" style="--c:#fff;--n:11"></i></div>
-<div class="side">
-<button class="mini rv tilt" style="--i:1;background:#8A1642" data-cat="Promoções"><b>Promoções<br>até 30% OFF</b><span>Aproveite as ofertas da semana</span><i class="b" style="--c:#ffd0e6;--n:9"></i></button>
-<button class="mini rv tilt" style="--i:2;background:#C98467" data-cat="Buquês"><b>Buquês<br>românticos</b><span>Para todas as ocasiões</span><i class="b" style="--c:#ffd9c7;--n:7"></i></button>
-</div></div>
-<div class="perks"><div class="rv"><svg class="ic"><use href="#i-flower"/></svg>Flores frescas todo dia</div><div class="rv" style="--i:1"><svg class="ic"><use href="#i-truck"/></svg>Atendimento 24 horas</div><div class="rv" style="--i:2"><svg class="ic"><use href="#i-card"/></svg>Parcelamento sem juros</div><div class="rv" style="--i:3"><svg class="ic"><use href="#i-bag"/></svg>Entrega grátis acima de R$ 99</div></div>
+
+<!-- ====================================== -->
+<!-- INÍCIO DO SITE JC FLORES -->
+<!-- ====================================== -->
+
+<div class="hero jc-hero">
+
+  <!-- BANNER PRINCIPAL -->
+  <div class="main rv jc-banner">
+
+    <div class="jc-banner-copy">
+
+      <span class="jc-eyebrow"><i></i>Floricultura 24 horas · Manaus</span>
+
+      <h1>Flores que<br><em>falam por você</em></h1>
+
+      <p>
+        Buquês, arranjos e presentes com
+        entrega rápida e muito carinho.
+      </p>
+
+      <div class="jc-cta">
+        <a class="btn jc-banner-btn" href="#loja" data-cat="Todas">
+          <span class="jc-bt">Ver produtos</span>
+          <span class="jc-ar" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="jc-ghost" href="https://wa.me/5592991204691?text=Ol%C3%A1!%20Acessei%20o%20site%20da%20JC%20Flores%20e%20gostaria%20de%20fazer%20um%20pedido." target="_blank" rel="noopener">Falar no WhatsApp</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- BANNERS LATERAIS -->
+  <div class="side jc-side">
+
+    <!-- PRESENTES ESPECIAIS -->
+    <button
+      class="mini rv jc-tile jc-tile-gifts"
+      style="--i:1"
+      data-cat="Presentes"
+    >
+
+      <b>
+        Presentes<br>
+        Especiais
+      </b>
+
+      <span>
+        Surpreenda em<br>
+        qualquer ocasião.
+      </span>
+
+    </button>
+
+    <!-- GIRASSÓIS -->
+    <button
+      class="mini rv jc-tile jc-tile-sun"
+      style="--i:2"
+      data-cat="Girassóis"
+    >
+
+      <b>Girassóis</b>
+
+      <span>
+        Alegria e energia<br>
+        em forma de flor.
+      </span>
+
+    </button>
+
+  </div>
+
+</div>
+
+<!-- ====================================== -->
+<!-- BENEFÍCIOS DA FLORICULTURA -->
+<!-- ====================================== -->
+
+<div class="perks jc-perks">
+
+  <!-- ENTREGA RÁPIDA -->
+  <div class="rv">
+
+    <svg class="ic">
+      <use href="#i-truck"></use>
+    </svg>
+
+    <span>
+      <strong>Entrega rápida</strong>
+      <small>em Manaus</small>
+    </span>
+
+  </div>
+
+  <!-- PAGAMENTO SEGURO -->
+  <div class="rv" style="--i:1">
+
+    <svg class="ic">
+      <use href="#i-card"></use>
+    </svg>
+
+    <span>
+      <strong>Pagamento seguro</strong>
+      <small>cartão, PIX e mais</small>
+    </span>
+
+  </div>
+
+  <!-- CARTÃO GRÁTIS -->
+  <div class="rv" style="--i:2">
+
+    <svg class="ic">
+      <use href="#i-mail"></use>
+    </svg>
+
+    <span>
+      <strong>Cartão com</strong>
+      <strong>mensagem grátis</strong>
+    </span>
+
+  </div>
+
+  <!-- ATENDIMENTO 24 HORAS -->
+  <div class="rv" style="--i:3">
+
+    <svg class="ic">
+      <use href="#i-calendar"></use>
+    </svg>
+
+    <span>
+      <strong>Atendimento</strong>
+      <small>24 horas</small>
+    </span>
+
+  </div>
+
+</div>
+
+<!-- FIM DA NOVA INTRODUÇÃO -->
 
 <!-- CARD PROFISSIONAL COM SLIDER (BUQUÊS E SERVIÇOS) -->
 <div class="pro-card rv">
   <div class="pro-slider">
     <img src="images/criacao1.jpg" alt="Buquê de Flores" loading="lazy">
-    <img src="images/criacao2.jpg" alt="Decoração de Eventos" loading="lazy">
+    <img src="images/criacao2.jpg" alt="Criação Floral" loading="lazy">
     <img src="images/criacao3.jpg" alt="Assinatura Floral" loading="lazy">
   </div>
   <div class="pro-info">
     <h3>Criações & Serviços Exclusivos</h3>
-    <p>Do buquê perfeito para presentear à decoração completa de eventos. Desenvolvemos arranjos e projetos sob medida com o frescor e o carinho que seu momento exige.</p>
+    <p>Do buquê perfeito à celebração dos momentos mais especiais da sua vida. Desenvolvemos arranjos e projetos sob medida com o frescor e o carinho que seu momento exige.</p>
     <a href="https://wa.me/5592991204691?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20encomenda%20de%20buqu%C3%AA%20ou%20um%20or%C3%A7amento%20para%20servi%C3%A7os." target="_blank" rel="noopener" class="btn">Fazer Encomenda ou Orçamento</a>
   </div>
 </div>
@@ -116,15 +324,15 @@
   <div class="os-badge">Projetos Sob Medida</div>
   <div class="os-header">
     <h2>Muito Além dos Buquês</h2>
-    <p>Criamos experiências florais completas para momentos inesquecíveis, homenagens e eventos especiais em Manaus.</p>
+    <p>Criamos experiências florais completas para momentos inesquecíveis: buquês de casamento, cestas exclusivas e homenagens em Manaus.</p>
   </div>
   
   <div class="os-cards">
-    <!-- Bloco 1: Eventos -->
+    <!-- Bloco 1: Buquês de Casamento -->
     <div class="os-card" style="--bg-img: url('images/casamento.jpg');">
       <div class="os-icon-box"><svg class="os-icon-svg"><use href="#i-sparkles"/></svg></div>
-      <h3>Eventos & Casamentos</h3>
-      <p>Decoração floral completa, altares, painéis instagramáveis e buquês de noiva sob encomenda.</p>
+      <h3>Buquês de Casamento</h3>
+      <p>Buquês de noiva feitos sob encomenda, com flores frescas e acabamento delicado para o seu grande dia.</p>
       <div class="os-gal" id="sv-eventos"></div>
     </div>
     
@@ -178,7 +386,7 @@
       <div class="ct-about">
         <h3 class="ct-label">Quem Somos</h3>
         <div class="logo logo-img" style="text-align:left;margin-bottom:16px"><img src="images/logo.jpg" alt="JC Flores Floricultura" width="96" height="96"></div>
-        <p>Floricultura e presentes em Manaus, com atendimento 24 horas. Flores frescas, arranjos feitos à mão, coroas e decorações para eventos. Nosso propósito é entregar carinho e emoção em cada detalhe, com agilidade e excelência.</p>
+        <p>Floricultura e presentes em Manaus, com atendimento 24 horas. Flores frescas, arranjos feitos à mão, coroas e buquês de casamento. Nosso propósito é entregar carinho e emoção em cada detalhe, com agilidade e excelência.</p>
       </div>
 
 
@@ -237,7 +445,7 @@
 </main>
 
 <footer><div class="w"><div class="fg">
-<div><div class="logo logo-img"><img src="images/logo.jpg" alt="JC Flores Floricultura" width="72" height="72"></div><p style="font-size:14px">Floricultura 24 horas em Manaus. Flores frescas e arranjos feitos à mão com carinho.</p></div>
+<div><div class="brand brand-f"><span class="brand-n">JC Flores</span><span class="brand-s">Floricultura · 24h</span></div><p style="font-size:14px">Floricultura 24 horas em Manaus. Flores frescas e arranjos feitos à mão com carinho.</p></div>
 <div><h4>Comprar</h4><ul><li><a href="#loja" data-cat="Promoções">Promoções</a></li><li><a href="#loja" data-cat="Buquês">Buquês</a></li><li><a href="#outros-servicos">Serviços</a></li><li><a href="#loja" data-cat="Plantas">Plantas</a></li></ul></div>
 <div><h4>Atendimento</h4><ul><li>WhatsApp 24h</li><li>24 horas · todos os dias</li><li>Entregas e retiradas</li></ul></div>
 <div><h4>Pagamento</h4><ul><li>Pix</li><li>Cartão parcelado</li><li>Dinheiro na entrega</li></ul></div>
@@ -249,10 +457,26 @@
 <div class="foot" id="ft">
 <div class="up" id="up"></div>
 <select id="dl" aria-label="Entrega"><option value="e">Entrega em casa</option><option value="r">Retirar na loja</option></select>
+<h5 class="fs">Informações do cliente</h5>
+<input type="text" id="cNome" placeholder="Nome" autocomplete="name">
+<input type="tel" id="cTel" placeholder="Contato (WhatsApp)" autocomplete="tel">
+<select id="pgto" aria-label="Forma de pagamento"><option value="">Forma de pagamento…</option><option value="c">Crédito online (link de pagamento, acréscimo de R$ 10,00)</option><option value="p">PIX</option><option value="d">Dinheiro</option></select>
+<div class="dt"><label><span id="dtl">Data da entrega</span><input type="date" id="dd"></label><label><span id="rtl">Rota de entrega</span><select id="tn"><option value="">Escolha a rota</option><option value="Manhã 9h até 13h">Manhã · 9h até 13h</option><option value="Tarde 14h até 18h">Tarde · 14h até 18h</option><option value="Noite 17h até 21h">Noite · 17h até 21h</option></select></label></div>
+<div id="rcv" class="rcv">
+<h5 class="fs">Informações de quem receberá</h5>
+<input type="text" id="rNome" placeholder="Destinatário(a)">
+<input type="tel" id="rTel" placeholder="Contato do destinatário">
+<input type="text" id="rEnd" placeholder="Endereço">
 <select id="bn" aria-label="Bairro de entrega"></select>
-<div class="dt"><label><span id="dtl">Data da entrega</span><input type="date" id="dd"></label><label>Turno<select id="tn"><option value="">Qualquer horário</option><option value="Manhã (8h–12h)">Manhã · 8h–12h</option><option value="Tarde (13h–18h)">Tarde · 13h–18h</option></select></label></div>
-<textarea id="msg" rows="2" placeholder="Mensagem para o cartão (opcional)"></textarea>
-<div class="row"><span>Subtotal</span><span id="sb"></span></div><div class="row"><span>Frete</span><span id="fr"></span></div>
+<input type="text" id="rSet" placeholder="Local/setor (casa, apto, bloco, empresa…)">
+<input type="text" id="rRef" placeholder="Ponto de referência">
+<input type="text" id="rLoc" placeholder="Localização: cole o link do Google Maps (opcional)">
+<small class="hint">Se preferir, envie a <b>localização fixa</b> pelo WhatsApp logo após enviar o pedido.</small>
+</div>
+<textarea id="ob" rows="2" placeholder="Observação (opcional)"></textarea>
+<textarea id="msg" rows="2" placeholder="Mensagem do cartão (grátis, opcional)"></textarea>
+<div class="aviso"><p>É muito importante que os dados de entrega estejam corretos para evitar qualquer transtorno. Caso seja necessário alterar para novo endereço enquanto o pedido já estiver em rota, será cobrada uma nova taxa de entrega no valor de R$ 20,00, ou você pode retirar na loja.</p><p>Importante: alguém precisa estar no local para receber o produto dentro do horário da rota de entrega.</p></div>
+<div class="row"><span>Subtotal</span><span id="sb"></span></div><div class="row"><span>Frete</span><span id="fr"></span></div><div class="row" id="pfr" hidden><span>Taxa do link de pagamento</span><span>R$ 10,00</span></div>
 <div class="row tot"><span>Total</span><span id="tt"></span></div>
 <button class="wa" id="wa">Finalizar pelo WhatsApp</button></div></aside>
 <dialog id="mapa-dlg" aria-labelledby="mapa-tit">
