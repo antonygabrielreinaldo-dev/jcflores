@@ -1493,3 +1493,9 @@ html.ld-lock{overflow:hidden}
   #ld.ld-out{opacity:0}
   #ld{transition-property:opacity!important}
 }
+
+/* avaliações de clientes: marcas neutras (sem selo do Google) */
+.gl{color:var(--pk)!important;font:400 18px var(--sans)!important}
+.rm .rc .rg{font:400 18px var(--sans);color:var(--pk)}
+#rm.rm{text-decoration:none;margin:0;font-size:inherit;color:inherit;display:block}
+#rm.rm *{text-decoration:none}
