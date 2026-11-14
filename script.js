@@ -1,21 +1,23 @@
-var WHATS='5592991204691';
-var CATS=['Todas','Promoções','Serviços','Buquês','Rosas','Orquídeas','Girassóis','Plantas','Presentes'];
+var WHATS='559284439689';
+var CATS=['Todas','Promoções','Buquês','Buquê de Morangos','Cestas de Café','Girassóis','Lírios','Decorações','Presentes'];
 
 var P=[
-[1,'Buquê 12 Rosas Vermelhas','Rosas',189,239,'#d6203f','#FFE1E6',13,'Doze rosas vermelhas selecionadas com folhagem e embalagem de presente.'],
-[2,'Rosas Cor-de-Rosa Premium','Rosas',159,0,'#D9759F','#F9E3EC',11,'Rosas rosadas de haste longa, perfumadas e muito frescas.'],
-[3,'Orquídea Phalaenopsis Branca','Orquídeas',210,260,'#ffffff','#F1E6F5',7,'Orquídea em vaso de cerâmica, elegante e de longa duração.'],
-[4,'Orquídea Lilás Duplo Cacho','Orquídeas',245,0,'#b57edc','#F4E8FA',7,'Duas hastes floridas em vaso decorativo.'],
-[5,'Buquê de Girassóis','Girassóis',129,159,'#f5b60a','#FFF3C9',13,'Seis girassóis radiantes com folhagem e fita.'],
-[6,'Girassóis no Vaso de Vidro','Girassóis',99,0,'#f5a30a','#FFF0CF',9,'Arranjo alegre pronto para presentear.'],
-[7,'Buquê Romântico Mix','Buquês',175,220,'#E48AB0','#FFE8F2',11,'Rosas, lisiantos e astromélias em tons de rosa.'],
-[8,'Buquê Campestre','Buquês',139,0,'#ffa970','#FFEBDD',9,'Flores do campo em composição solta e delicada.'],
-[9,'Suculenta Rosa de Pedra','Plantas',39,49,'#7fae7a','#E6F4E4',11,'Fácil de cuidar, ideal para mesa e escritório.'],
-[10,'Violeta em Vaso','Plantas',45,0,'#8e5cc8','#EEE6F8',5,'Florada contínua, perfeita para ambientes claros.'],
-[11,'Cesta Café da Manhã Floral','Presentes',289,349,'#D9759F','#F9E3EC',9,'Cesta com flores, frutas, bolo e chocolates.'],
-[12,'Kit Rosa + Chocolate','Presentes',119,0,'#d6203f','#FFE1E6',7,'Uma rosa, caixa de bombons e cartão personalizado.'],
-[13,'Coroa de Flores Brancas','Presentes',320,0,'#ffffff','#EAF1EA',13,'Coroa com rosas e lírios brancos para homenagem e despedida. Atendimento prioritário.'],
-[14,'Arranjo Boas-vindas Bebê','Buquês',149,0,'#8ec5e8','#E6F2FA',11,'Arranjo delicado em tons suaves para receber o bebê e a mamãe.'],
+[1,'Buquê de Morangos Clássico','Buquê de Morangos',149,189,'#d6203f','#FFE1E6',9,'Morangos frescos cobertos com chocolate, montados em buquê com embalagem e cartão.'],
+[2,'Buquê de Morangos com Rosas','Buquê de Morangos',199,0,'#d6203f','#FFE1E6',11,'Morangos com chocolate e rosas vermelhas no mesmo buquê.'],
+[3,'Buquê de Morangos Premium','Buquê de Morangos',259,299,'#b3122f','#FFE4E8',13,'Versão maior, com mais morangos, chocolates variados e acabamento especial.'],
+[4,'Cesta de Café da Manhã Romântica','Cestas de Café',239,289,'#D9759F','#F9E3EC',9,'Pães, frutas, bolo, frios, suco e mimos, montada com carinho para surpreender.'],
+[5,'Cesta de Café da Manhã com Flores','Cestas de Café',289,0,'#E48AB0','#FFE8F2',11,'Cesta completa de café da manhã acompanhada de arranjo de flores.'],
+[6,'Cesta de Café Aniversário','Cestas de Café',219,0,'#f5b60a','#FFF3C9',9,'Cesta de café da manhã com balão e cartão de parabéns.'],
+[7,'Buquê de Girassóis','Girassóis',129,159,'#f5b60a','#FFF3C9',13,'Girassóis radiantes com folhagem e fita.'],
+[8,'Girassóis no Vaso de Vidro','Girassóis',99,0,'#f5a30a','#FFF0CF',9,'Arranjo alegre pronto para presentear.'],
+[9,'Buquê de Lírios','Lírios',169,0,'#ffffff','#F1E6F5',7,'Lírios perfumados com folhagem e embalagem de presente.'],
+[10,'Lírios e Rosas','Lírios',189,0,'#E48AB0','#FFE8F2',9,'Lírios combinados com rosas em tons de rosa.'],
+[11,'Buquê Romântico de Rosas','Buquês',175,220,'#d6203f','#FFE1E6',13,'Rosas vermelhas selecionadas com folhagem e embalagem de presente.'],
+[12,'Buquê Campestre','Buquês',139,0,'#ffa970','#FFEBDD',9,'Flores do campo em composição solta e delicada.'],
+[13,'Decoração Romântica Surpresa','Decorações',350,0,'#b3122f','#FFE4E8',11,'Decoração com pétalas, balões e velas para uma surpresa inesquecível. Consulte disponibilidade.'],
+[14,'Decoração de Aniversário','Decorações',280,0,'#f5b60a','#FFF3C9',9,'Decoração com balões e painel para comemorar em casa. Consulte disponibilidade.'],
+[15,'Cesta de Páscoa com Chocolates','Presentes',189,0,'#8b5a3c','#F3E6DC',9,'Cesta com ovos, bombons e mimos para uma Páscoa doce.'],
+[16,'Kit Rosa + Chocolate','Presentes',119,0,'#d6203f','#FFE1E6',7,'Uma rosa, caixa de bombons e cartão personalizado.'],
 [101,'Caixa de chocolates / trufas','Complementos',25,0,'#8b5a3c','#F3E6DC',7,'Caixa de trufas artesanais.'],
 [102,'Balão metalizado Parabéns / Te Amo','Complementos',15,0,'#f5b60a','#FFF3C9',7,'Balão metalizado (informe a frase no cartão).'],
 [103,'Pelúcia pequena','Complementos',35,0,'#E48AB0','#FFE8F2',9,'Pelúcia macia para acompanhar o presente.']
@@ -25,35 +27,36 @@ var AD=[101,102,103];
 
 var OCS=[
 ['Aniversário','Aniversário'],
-['Romântico','Romântico / Pedido'],
+['Romântico','Romântico / Namorados'],
 ['Maternidade','Maternidade / Boas-vindas'],
-['Condolências','Condolências / Pêsames']
+['Páscoa','Páscoa']
 ];
 
 var OC={
 1:['Romântico','Aniversário'],
-2:['Romântico','Aniversário','Maternidade'],
-3:['Aniversário','Maternidade','Condolências'],
-4:['Aniversário','Maternidade'],
-5:['Aniversário','Maternidade'],
+2:['Romântico','Aniversário'],
+3:['Romântico','Aniversário'],
+4:['Aniversário','Romântico','Maternidade'],
+5:['Aniversário','Romântico','Maternidade'],
 6:['Aniversário'],
-7:['Romântico','Aniversário'],
-8:['Aniversário','Maternidade'],
-9:['Aniversário'],
-10:['Aniversário'],
-11:['Aniversário','Romântico'],
-12:['Romântico'],
-13:['Condolências'],
-14:['Maternidade']
+7:['Aniversário','Maternidade'],
+8:['Aniversário'],
+9:['Aniversário','Maternidade'],
+10:['Romântico','Aniversário'],
+11:['Romântico','Aniversário'],
+12:['Aniversário','Maternidade'],
+13:['Romântico','Aniversário'],
+14:['Aniversário'],
+15:['Páscoa'],
+16:['Romântico']
 };
 
 var FG=100,TYPEIMG={},SVC={};
 
 var SVCS=[
-['eventos','Buquês de Casamento'],
-['assinatura','Assinatura Floral'],
-['cestas','Cestas Exclusivas'],
-['homenagens','Homenagens & Coroas']
+['decoracoes','Decorações'],
+['cestas','Cestas de Café da Manhã'],
+['morangos','Buquês de Morangos']
 ];
 
 var BAIRROS={
@@ -235,7 +238,7 @@ function list(){
       '<button class="add" data-a="'+p[0]+'">Adicionar ao carrinho</button>'+
       '</div></article>';
     }).join('')
-    :'<div class="empty">Nenhuma flor encontrada. Tente outra busca.</div>';
+    :'<div class="empty">Nenhum produto encontrado. Tente outra busca.</div>';
 
   reveal();
 
@@ -303,7 +306,14 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 
   if($('dl'))$('dl').onchange=draw;
-  if($('bn'))$('bn').onchange=draw;
+  if($('bn')){
+    var tb=null;
+    $('bn').oninput=function(){
+      clearTimeout(tb);
+      tb=setTimeout(draw,250);
+    };
+    $('bn').onchange=draw;
+  }
   if($('dd'))$('dd').onchange=dchk;
   if($('lf'))$('lf').onsubmit=lembrete;
 
@@ -330,7 +340,7 @@ document.addEventListener('DOMContentLoaded',function(){
         ['rNome','Informe o destinatário(a)'],
         ['rTel','Informe o contato do destinatário'],
         ['rEnd','Informe o endereço'],
-        ['bn','Escolha o bairro de entrega'],
+        ['bn','Informe o bairro de entrega'],
         ['rSet','Informe o local/setor']
       ]);
     }
@@ -345,6 +355,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
     var s=sub();
     var f=fee(s);
+    var freteAConfirmar=del&&s&&s<FG&&!achaBairro($('bn').value);
     var pf=$('pgto').value==='c'?10:0;
 
     var pgt={
@@ -360,7 +371,7 @@ document.addEventListener('DOMContentLoaded',function(){
     ];
 
     var l=[
-      '🌹 *PEDIDO - JC FLORES*',
+      '🍓 *PEDIDO - EU QUERO MORANGO*',
       '',
       '👤 *INFORMAÇÕES DO CLIENTE*',
       'Nome: '+v('cNome'),
@@ -385,7 +396,7 @@ document.addEventListener('DOMContentLoaded',function(){
         'Destinatário(a): '+v('rNome'),
         'Contato: '+v('rTel'),
         'Endereço: '+v('rEnd'),
-        'Bairro: '+$('bn').value,
+        'Bairro: '+v('bn'),
         'Local/setor: '+v('rSet'),
         'Ponto de referência: '+(v('rRef')||'—'),
         'Localização: '+(v('rLoc')||'Enviarei depois')
@@ -437,7 +448,7 @@ document.addEventListener('DOMContentLoaded',function(){
       '',
       '💰 *RESUMO DA COMPRA*',
       'Subtotal: '+R(s),
-      'Frete: '+(f?R(f):'Grátis')
+      'Frete: '+(freteAConfirmar?'A confirmar (bairro fora da tabela)':f?R(f):'Grátis')
     );
 
     if(pf){
@@ -651,11 +662,31 @@ function sub(){
   },0);
 }
 
+/* BAIRRO DIGITADO PELO CLIENTE: ignora maiúsculas, acentos e "Sra./Senhora" */
+function normB(t){
+  return String(t||'').toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/^bairro\s+/,'')
+    .replace(/\bsra\b\.?/g,'senhora')
+    .replace(/[^a-z0-9 ]/g,' ')
+    .replace(/\s+/g,' ').trim();
+}
+
+function achaBairro(t){
+  var n=normB(t);
+  if(!n)return null;
+  var ks=Object.keys(BAIRROS);
+  for(var i=0;i<ks.length;i++){
+    if(normB(ks[i])===n)return ks[i];
+  }
+  return null;
+}
+
 function fee(s){
   if(!s||$('dl').value==='r'||s>=FG)return 0;
 
-  var b=BAIRROS[$('bn').value];
-  return b==null?0:b;
+  var k=achaBairro($('bn').value);
+  return k?BAIRROS[k]:0;
 }
 
 /* CARRINHO */
@@ -691,10 +722,12 @@ function draw(){
       '<button class="rm" data-m="'+k+'" data-d="-99">remover</button>'+
       '</div></div>';
     }).join('')
-    :'<div class="ep">Seu carrinho está vazio.<br>Escolha flores lindas para presentear!</div>';
+    :'<div class="ep">Seu carrinho está vazio.<br>Escolha um presente lindo para emocionar!</div>';
 
   var del=$('dl').value==='e';
-  var need=del&&s&&s<FG&&!$('bn').value;
+  var bTxt=$('bn').value.trim();
+  var need=del&&s&&s<FG&&!bTxt;
+  var unk=del&&s&&s<FG&&!!bTxt&&!achaBairro(bTxt);
 
   $('rcv').style.display=del?'':'none';
   $('rtl').textContent=del?'Rota de entrega':'Horário de retirada';
@@ -707,10 +740,11 @@ function draw(){
   $('sb').textContent=R(s);
 
   $('fr').textContent=need
-    ?'Selecione o bairro'
+    ?'Informe o bairro'
+    :unk?'A confirmar no WhatsApp'
     :f?R(f):'Grátis';
 
-  $('tt').textContent=R(s+f+pf)+(need?' + frete':'');
+  $('tt').textContent=R(s+f+pf)+((need||unk)?' + frete':'');
 
   $('up').innerHTML=
     '<h5>Adicione um complemento</h5>'+
@@ -735,6 +769,7 @@ function drawer(o){
   $('dr').classList.toggle('on',o);
   $('ov').classList.toggle('on',o);
   $('dr').setAttribute('aria-hidden',!o);
+  document.documentElement.classList.toggle('cart-open',!!o);
 }
 
 document.addEventListener('keydown',function(e){
@@ -875,7 +910,7 @@ function lembrete(e){
 
   if(!a||!b||!d)return;
 
-  var t='*Lembrete de data especial – JC Flores*\n'+
+  var t='*Lembrete de data especial – Eu Quero Morango*\n'+
     'Meu nome: '+a+'\n'+
     'Aniversariante: '+b+'\n'+
     'Data: '+dbr(d)+'\n'+
@@ -922,17 +957,13 @@ function renderStatic(){
 }
 
 function buildBairros(){
-  var v=$('bn').value;
+  /* sugestões opcionais: o cliente continua livre para digitar qualquer bairro */
+  var dl=$('bnl');
+  if(!dl)return;
 
-  $('bn').innerHTML=
-    '<option value="">Selecione o bairro…</option>'+
-    Object.keys(BAIRROS).map(function(b){
-      return '<option value="'+b+'">'+
-        b+' · '+R(BAIRROS[b])+
-        '</option>';
-    }).join('');
-
-  $('bn').value=v;
+  dl.innerHTML=Object.keys(BAIRROS).map(function(b){
+    return '<option value="'+b+'" label="'+R(BAIRROS[b])+'"></option>';
+  }).join('');
 }
 
 /* SERVIÇOS */
@@ -1023,16 +1054,16 @@ function refreshAll(){
 /* Avaliações de exemplo (criadas para a vitrine).
    Troque por avaliações reais de clientes antes de divulgar o site. */
 var REVIEWS=[
-  {n:"Mariana S.",s:5,t:"Pedi um buquê de rosas vermelhas para o aniversário da minha mãe e chegou lindo, fresquinho e antes do horário combinado. Ela se emocionou muito!",d:"há 3 dias"},
-  {n:"Carlos E.",s:5,t:"Atendimento 24 horas de verdade. Precisei de uma coroa de flores de madrugada e fui atendido com muito respeito e rapidez. Fica o meu agradecimento.",d:"há 1 semana"},
-  {n:"Juliana P.",s:5,t:"O buquê de girassóis é uma alegria só! Veio bem embalado, com cartão e tudo certinho. Quem recebeu amou.",d:"há 1 semana"},
-  {n:"Rafael M.",s:5,t:"A cesta de café da manhã com flores surpreendeu minha esposa. Tudo muito bem montado e entregue na hora marcada.",d:"há 2 semanas"},
-  {n:"Aline C.",s:5,t:"Encomendei meu buquê de noiva com a JC Flores e ficou exatamente como eu sonhava. Delicado, perfumado e durou o dia inteiro.",d:"há 2 semanas"},
-  {n:"Patrícia L.",s:4,t:"Orquídea linda e muito bem embalada. A entrega atrasou alguns minutos por causa da chuva, mas avisaram tudo pelo WhatsApp.",d:"há 3 semanas"},
-  {n:"Thiago B.",s:5,t:"Atendimento rápido pelo WhatsApp e o cartão com mensagem grátis foi um toque especial. Já é minha floricultura de confiança.",d:"há 1 mês"},
-  {n:"Fernanda R.",s:5,t:"As rosas cor-de-rosa são lindas, de haste longa e muito frescas. Preço justo pela qualidade. Recomendo!",d:"há 1 mês"},
-  {n:"Marcos A.",s:5,t:"Comprei o kit rosa com chocolate para surpreender minha namorada. Chegou perfeito e ela adorou o capricho.",d:"há 2 meses"},
-  {n:"Luciana D.",s:5,t:"Já é a terceira vez que compro e sempre sou muito bem atendida. Flores sempre frescas e entrega pontual em Manaus.",d:"há 2 meses"}
+  {n:"Mariana S.",s:5,t:"Pedi o buquê de morangos para o aniversário da minha irmã e chegou lindo, com os morangos fresquinhos e dentro do horário. Ela amou!",d:"há 3 dias"},
+  {n:"Carlos E.",s:5,t:"A cesta de café da manhã surpreendeu minha esposa. Tudo muito bem montado, caprichado e entregue na hora marcada.",d:"há 1 semana"},
+  {n:"Juliana P.",s:5,t:"Fiz uma decoração romântica para o meu noivo e ficou um sonho. Atendimento atencioso do começo ao fim.",d:"há 1 semana"},
+  {n:"Rafael M.",s:5,t:"O buquê de girassóis é uma alegria só! Veio bem embalado, com cartão e tudo certinho.",d:"há 2 semanas"},
+  {n:"Aline C.",s:5,t:"Os lírios chegaram perfumados e lindos, e a entrega foi rápida aqui em Manaus. Já é minha loja de confiança.",d:"há 2 semanas"},
+  {n:"Patrícia L.",s:4,t:"Buquê lindo e muito bem embalado. A entrega atrasou alguns minutos por causa da chuva, mas avisaram tudo pelo WhatsApp.",d:"há 3 semanas"},
+  {n:"Thiago B.",s:5,t:"Atendimento rápido pelo WhatsApp e o cartão com mensagem foi um toque especial. Presente que emociona de verdade.",d:"há 1 mês"},
+  {n:"Fernanda R.",s:5,t:"Comprei a cesta de Páscoa para a família e todo mundo adorou. Preço justo e capricho em cada detalhe.",d:"há 1 mês"},
+  {n:"Marcos A.",s:5,t:"Kit com rosa e chocolate para surpreender minha namorada. Chegou perfeito e ela adorou o capricho.",d:"há 2 meses"},
+  {n:"Luciana D.",s:5,t:"Já é a terceira vez que compro e sempre sou muito bem atendida. Tudo fresquinho e entrega pontual.",d:"há 2 meses"}
 ];
 
 function esc(s){

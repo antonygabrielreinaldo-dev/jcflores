@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>(function(){var d=document.documentElement;try{if(sessionStorage.getItem('jc-ld')){d.classList.add('ld-off');return}}catch(e){}d.classList.add('ld-lock','ld-wait')})()</script>
 <noscript><style>#ld{display:none!important}html.ld-lock{overflow:auto!important}html.ld-wait .jc-banner-copy>*{opacity:1!important;transform:none!important}</style></noscript>
-<title>JC Flores · Floricultura & Presentes em Manaus</title>
-<meta name="description" content="Floricultura 24 horas em Manaus: buquês, coroas, cestas e presentes. Entrega grátis acima de R$ 100.">
-<meta property="og:title" content="JC Flores">
-<meta property="og:description" content="Flores frescas, buquês e arranjos com entrega rápida e muito carinho.">
+<title>Eu Quero Morango · Floricultura, Cestas e Buquês em Manaus</title>
+<meta name="description" content="Eu Quero Morango, floricultura em Manaus: buquês, buquê de morangos, cestas de café da manhã, decorações e presentes que emocionam. Entrega em Manaus.">
+<meta property="og:title" content="Eu Quero Morango">
+<meta property="og:description" content="Presentes que emocionam: buquês, buquê de morangos, cestas de café da manhã e decorações com entrega em Manaus.">
 <meta property="og:image" content="images/logo.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" href="images/logo.jpg">
@@ -20,7 +20,9 @@
 <script src="admin.js" defer></script>
 </head>
 <body>
-<div id="ld" role="status" aria-live="polite" aria-label="Carregando a JC Flores">
+<div id="ld" role="status" aria-live="polite" aria-label="Carregando a Eu Quero Morango">
+  <div class="ld-wall" id="ld-wall" aria-hidden="true"><div class="ld-wall-plane"></div></div>
+  <div class="ld-glow" aria-hidden="true"></div>
   <div class="ld-p ld-pt"></div><div class="ld-p ld-pb"></div>
   <div class="ld-vig"></div>
   <div class="ld-fl" aria-hidden="true"><i style="--x:2.8%;--s:1.1;--d:15.5s;--w:-5.6s;--dx:1px;--o:0.48"></i><i style="--x:7.7%;--s:1.06;--d:13.4s;--w:-9.5s;--dx:-65px;--o:0.39"></i><i style="--x:13.4%;--s:1.33;--d:13.9s;--w:-0.5s;--dx:77px;--o:0.59"></i><i style="--x:21.6%;--s:1.15;--d:10.1s;--w:-0.2s;--dx:5px;--o:0.32"></i><i style="--x:25.8%;--s:0.82;--d:9.2s;--w:-5.6s;--dx:-10px;--o:0.55"></i><i style="--x:33.1%;--s:1.18;--d:12.5s;--w:-7.9s;--dx:-7px;--o:0.38"></i><i style="--x:41.0%;--s:1.5;--d:14.9s;--w:-8.5s;--dx:-30px;--o:0.37"></i><i style="--x:44.2%;--s:0.66;--d:14.4s;--w:-4.8s;--dx:55px;--o:0.42"></i><i style="--x:52.8%;--s:1.36;--d:9.0s;--w:-2.5s;--dx:66px;--o:0.44"></i><i style="--x:58.9%;--s:0.96;--d:9.5s;--w:-7.6s;--dx:45px;--o:0.38"></i><i style="--x:61.3%;--s:0.9;--d:15.7s;--w:-9.1s;--dx:-61px;--o:0.37"></i><i style="--x:67.4%;--s:0.65;--d:14.6s;--w:-2.1s;--dx:9px;--o:0.43"></i><i style="--x:73.8%;--s:1.26;--d:9.9s;--w:-7.7s;--dx:-61px;--o:0.43"></i><i style="--x:79.9%;--s:0.84;--d:15.8s;--w:-9.6s;--dx:-31px;--o:0.57"></i><i style="--x:85.8%;--s:0.95;--d:15.0s;--w:-7.7s;--dx:-64px;--o:0.6"></i><i style="--x:91.9%;--s:0.83;--d:14.4s;--w:-3.9s;--dx:-33px;--o:0.32"></i></div>
@@ -29,14 +31,69 @@
       <span class="ld-ring"></span><span class="ld-ring r2"></span>
       <div class="ld-disc"><img src="images/logo.jpg" alt="" width="150" height="150" decoding="async"></div>
     </div>
-    <p class="ld-tag">Flores que falam por você</p>
+    <p class="ld-tag">Presentes que emocionam</p>
     <div class="ld-prog" aria-hidden="true">
+      <p class="ld-msg" id="ld-msg">Colhendo as flores mais frescas</p>
       <div class="ld-line"><span id="ld-bar"></span></div>
       <div class="ld-num"><span id="ld-num">0</span>%</div>
     </div>
   </div>
-  <p class="ld-foot" aria-hidden="true">Floricultura 24 horas · Manaus</p>
+  <p class="ld-foot" aria-hidden="true">Floricultura · Manaus</p>
 </div>
+<script>
+/* TELA DE CARREGAMENTO · fundo "drift wall" de buquês (versão JS puro do DriftWall, React Bits) */
+(function () {
+  var ldEl = document.getElementById('ld');
+  var wall = document.querySelector('#ld-wall .ld-wall-plane');
+  if (!ldEl || !wall) return;
+  var IMGS = [];
+  for (var i = 1; i <= 6; i++) IMGS.push('images/buques/buque-' + i + '.jpg');   // troque por fotos reais se quiser
+  var N = IMGS.length;
+  var small = window.innerWidth < 700;
+  var COLS = small ? 3 : 5;      // colunas
+  var TH = 150;                  // altura de cada tile + espaço (px)
+  var SPEED = small ? 34 : 44;   // velocidade base (px/s)
+  var SCALE = small ? 0.95 : 1.15;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var period = N * TH, cols = [];
+
+  for (var c = 0; c < COLS; c++) {
+    var col = document.createElement('div'); col.className = 'ld-wall-col';
+    var track = document.createElement('div'); track.className = 'ld-wall-track';
+    for (var r = 0; r < 4; r++) {
+      for (var k = 0; k < N; k++) {
+        var t = document.createElement('div'); t.className = 'ld-wall-tile';
+        var im = document.createElement('img');
+        im.src = IMGS[(c * 2 + k) % N]; im.alt = ''; im.decoding = 'async'; im.draggable = false;
+        im.onerror = function () { this.style.display = 'none'; };
+        t.appendChild(im); track.appendChild(t);
+      }
+    }
+    col.appendChild(track); wall.appendChild(col);
+    cols.push({
+      track: track,
+      off: (c * 0.37 % 1) * period,
+      v: SPEED * (c % 2 ? -1 : 1) * (1 + 0.35 * (((c * 0.618 + 0.35) % 1) * 2 - 1))
+    });
+  }
+
+  var last = null, t0 = null;
+  function frame(ts) {
+    if (!document.body.contains(ldEl)) return;          // para quando a tela some
+    if (last === null) { last = ts; t0 = ts; }
+    var dt = Math.min(0.05, (ts - last) / 1000); last = ts;
+    var sway = reduce ? 0 : Math.sin((ts - t0) / 1000 * 0.35) * 3;
+    wall.style.transform = 'translate(-50%,-50%) scale(' + SCALE + ') rotateX(16deg) rotateY(' + (-14 + sway).toFixed(2) + 'deg) translateZ(-120px)';
+    for (var i = 0; i < cols.length; i++) {
+      var o = cols[i];
+      if (!reduce) o.off = (((o.off + o.v * dt) % period) + period) % period;
+      o.track.style.transform = 'translate3d(0,' + (-o.off).toFixed(1) + 'px,0)';
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
 <script>
 (function () {
   var ld = document.getElementById('ld');
@@ -46,7 +103,7 @@
 
   var num = document.getElementById('ld-num'), bar = document.getElementById('ld-bar');
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var DUR = reduce ? 700 : 4600;     // tempo mínimo de exibição (ms) — aumente para durar mais
+  var DUR = reduce ? 700 : 6000;     // tempo de exibição (ms): 6 segundos
   var FAILSAFE = 9000;               // nunca prende o visitante além disso
   var t0 = performance.now(), loaded = false, fonts = false, ready = false, p = 0, last = -1, done = false;
 
@@ -59,11 +116,21 @@
   setTimeout(function () { ready = true; }, FAILSAFE);
   setTimeout(function () { d.classList.remove('ld-wait'); }, FAILSAFE + 4000);
 
+  var msg = document.getElementById('ld-msg'), mi = -1;
+  var MSGS = [[0, 'Colhendo as flores mais frescas'], [22, 'Lavando os morangos'], [46, 'Mergulhando no chocolate'], [70, 'Montando o seu presente'], [94, 'Tudo pronto!']];
+  function setMsg(n) {
+    if (!msg) return;
+    var k = 0; for (var i = 0; i < MSGS.length; i++) if (n >= MSGS[i][0]) k = i;
+    if (k === mi) return; mi = k;
+    msg.classList.add('sw');
+    setTimeout(function () { msg.textContent = MSGS[k][1]; msg.classList.remove('sw'); }, 220);
+  }
+
   function ease(x) { return x < .5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2; }
 
   function finish() {
     if (done) return; done = true;
-    num.textContent = '100'; bar.style.transform = 'scaleX(1)';
+    num.textContent = '100'; bar.style.transform = 'scaleX(1)'; setMsg(100);
     setTimeout(function () {
       ld.classList.add('ld-out');
       d.classList.remove('ld-wait');
@@ -82,7 +149,7 @@
     p += (want - p) * 0.16;
     if (want - p < 0.05) p = want;
     var n = Math.round(p);
-    if (n !== last) { last = n; num.textContent = n; }
+    if (n !== last) { last = n; num.textContent = n; setMsg(n); }
     bar.style.transform = 'scaleX(' + (p / 100) + ')';
     if (ready && e >= 1 && p >= 99.5) { finish(); return; }
     requestAnimationFrame(tick);
@@ -122,10 +189,10 @@
 </a>
 
 <div class="stk">
-<div class="top" id="tp"><span> ⛟ Pedidos acima de R$ 100: <b>frete grátis</b> em Manaus</span><span class="sep">·</span><span> ✉ <b>Cartão com mensagem grátis</b></span><span class="sep">·</span><span> ⏱ Atendimento 24 horas</span></div>
+<div class="top" id="tp"><span> ⛟ Pedidos acima de R$ 100: <b>frete grátis</b> em Manaus</span><span class="sep">·</span><span> ✉ <b>Cartão com mensagem grátis</b></span><span class="sep">·</span><span> 🍓 Pedidos pelo WhatsApp</span></div>
 <header><div class="w hr">
-<a class="brand" href="#top" aria-label="JC Flores · Floricultura"><span class="brand-n">JC Flores</span><span class="brand-s">Floricultura · 24h</span></a>
-<form class="sr" id="sf" role="search"><input id="q" type="search" placeholder="Pesquisar flores, buquês, plantas…" aria-label="Pesquisar"><button type="submit" aria-label="Buscar"><svg class="ic"><use href="#i-search"/></svg></button></form>
+<a class="brand" href="#top" aria-label="Eu Quero Morango · Floricultura"><span class="brand-n">Eu Quero Morango</span><span class="brand-s">Floricultura · Manaus</span></a>
+<form class="sr" id="sf" role="search"><input id="q" type="search" placeholder="Pesquisar buquês, cestas, morangos…" aria-label="Pesquisar"><button type="submit" aria-label="Buscar"><svg class="ic"><use href="#i-search"/></svg></button></form>
 <button class="ct" id="oc" aria-label="Abrir carrinho"><svg class="ic"><use href="#i-bag"/></svg> <em id="cn">0</em></button>
 </div></header>
 <nav class="cats" id="top"><div class="w cn" id="cats"></div></nav>
@@ -134,7 +201,7 @@
 <main class="w">
 
 <!-- ====================================== -->
-<!-- INÍCIO DO SITE JC FLORES -->
+<!-- INÍCIO DO SITE EU QUERO MORANGO -->
 <!-- ====================================== -->
 
 <div class="hero jc-hero">
@@ -144,13 +211,13 @@
 
     <div class="jc-banner-copy">
 
-      <span class="jc-eyebrow"><i></i>Floricultura 24 horas · Manaus</span>
+      <span class="jc-eyebrow"><i></i>Floricultura · Manaus</span>
 
-      <h1>Flores que<br><em>falam por você</em></h1>
+      <h1>Presentes que<br><em>emocionam</em></h1>
 
       <p>
-        Buquês, arranjos e presentes com
-        entrega rápida e muito carinho.
+        Buquê de morangos, cestas de café da manhã,
+        buquês e decorações com entrega em Manaus.
       </p>
 
       <div class="jc-cta">
@@ -158,7 +225,7 @@
           <span class="jc-bt">Ver produtos</span>
           <span class="jc-ar" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
-        <a class="jc-ghost" href="https://wa.me/5592991204691?text=Ol%C3%A1!%20Acessei%20o%20site%20da%20JC%20Flores%20e%20gostaria%20de%20fazer%20um%20pedido." target="_blank" rel="noopener">Falar no WhatsApp</a>
+        <a class="jc-ghost" href="https://wa.me/559284439689?text=Ol%C3%A1!%20Acessei%20o%20site%20da%20Eu%20Quero%20Morango%20e%20gostaria%20de%20fazer%20um%20pedido." target="_blank" rel="noopener">Falar no WhatsApp</a>
       </div>
 
     </div>
@@ -172,17 +239,17 @@
     <button
       class="mini rv jc-tile jc-tile-gifts"
       style="--i:1"
-      data-cat="Presentes"
+      data-cat="Buquê de Morangos"
     >
 
       <b>
-        Presentes<br>
-        Especiais
+        Buquê de<br>
+        Morangos
       </b>
 
       <span>
-        Surpreenda em<br>
-        qualquer ocasião.
+        Doce, lindo e<br>
+        feito para emocionar.
       </span>
 
     </button>
@@ -191,14 +258,14 @@
     <button
       class="mini rv jc-tile jc-tile-sun"
       style="--i:2"
-      data-cat="Girassóis"
+      data-cat="Cestas de Café"
     >
 
-      <b>Girassóis</b>
+      <b>Cestas de<br>Café da Manhã</b>
 
       <span>
-        Alegria e energia<br>
-        em forma de flor.
+        Comece o dia de quem<br>
+        você ama com carinho.
       </span>
 
     </button>
@@ -264,7 +331,7 @@
 
     <span>
       <strong>Atendimento</strong>
-      <small>24 horas</small>
+      <small>pelo WhatsApp</small>
     </span>
 
   </div>
@@ -276,20 +343,20 @@
 <!-- CARD PROFISSIONAL COM SLIDER (BUQUÊS E SERVIÇOS) -->
 <div class="pro-card rv">
   <div class="pro-slider">
-    <img src="images/criacao1.jpg" alt="Buquê de Flores" loading="lazy">
-    <img src="images/criacao2.jpg" alt="Criação Floral" loading="lazy">
-    <img src="images/criacao3.jpg" alt="Assinatura Floral" loading="lazy">
+    <img src="images/criacao1.jpg" alt="Buquê de Morangos" loading="lazy">
+    <img src="images/criacao2.jpg" alt="Cesta de Café da Manhã" loading="lazy">
+    <img src="images/criacao3.jpg" alt="Decoração Romântica" loading="lazy">
   </div>
   <div class="pro-info">
-    <h3>Criações & Serviços Exclusivos</h3>
-    <p>Do buquê perfeito à celebração dos momentos mais especiais da sua vida. Desenvolvemos arranjos e projetos sob medida com o frescor e o carinho que seu momento exige.</p>
-    <a href="https://wa.me/5592991204691?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20encomenda%20de%20buqu%C3%AA%20ou%20um%20or%C3%A7amento%20para%20servi%C3%A7os." target="_blank" rel="noopener" class="btn">Fazer Encomenda ou Orçamento</a>
+    <h3>Presentes Feitos para Emocionar</h3>
+    <p>De buquês de morangos a cestas de café da manhã e decorações, montamos cada presente com carinho para transformar aniversários, surpresas e declarações em momentos inesquecíveis.</p>
+    <a href="https://wa.me/559284439689?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20encomenda%20personalizada." target="_blank" rel="noopener" class="btn">Fazer Encomenda Personalizada</a>
   </div>
 </div>
 
 <!-- SEÇÃO: TIPOS DE FLORES -->
 <section class="sec-bg rv">
-  <h2 class="t">Tipos de Flores</h2>
+  <h2 class="t">Nossas Categorias</h2>
   <div class="types" id="types"></div>
 </section>
 
@@ -321,46 +388,46 @@
 
 <!-- SEÇÃO OUTROS SERVIÇOS -->
 <section id="outros-servicos" class="outros-servicos rv">
-  <div class="os-badge">Projetos Sob Medida</div>
+  <div class="os-badge">Sob Encomenda</div>
   <div class="os-header">
-    <h2>Muito Além dos Buquês</h2>
-    <p>Criamos experiências florais completas para momentos inesquecíveis: buquês de casamento, cestas exclusivas e homenagens em Manaus.</p>
+    <h2>Muito Além das Flores</h2>
+    <p>Criamos presentes e surpresas completas para momentos inesquecíveis: decorações, cestas de café da manhã e buquês de morangos em Manaus.</p>
   </div>
   
   <div class="os-cards">
-    <!-- Bloco 1: Buquês de Casamento -->
-    <div class="os-card" style="--bg-img: url('images/casamento.jpg');">
+    <!-- Bloco 1: Decorações -->
+    <div class="os-card" style="--bg-img: url('images/decoracao.jpg');">
       <div class="os-icon-box"><svg class="os-icon-svg"><use href="#i-sparkles"/></svg></div>
-      <h3>Buquês de Casamento</h3>
-      <p>Buquês de noiva feitos sob encomenda, com flores frescas e acabamento delicado para o seu grande dia.</p>
-      <div class="os-gal" id="sv-eventos"></div>
+      <h3>Decorações</h3>
+      <p>Decorações românticas e de aniversário com balões, pétalas e flores para surpreender quem você ama.</p>
+      <div class="os-gal" id="sv-decoracoes"></div>
     </div>
-    
+
     <!-- Bloco 2: Cestas -->
     <div class="os-card" style="--bg-img: url('images/cesta.jpg');">
       <div class="os-icon-box"><svg class="os-icon-svg"><use href="#i-gift"/></svg></div>
-      <h3>Cestas Exclusivas</h3>
-      <p>Combinações personalizadas de café da manhã, chocolates finos e vinhos harmonizados.</p>
+      <h3>Cestas de Café da Manhã</h3>
+      <p>Cestas montadas com pães, frutas, bolos, frios e mimos, para começar o dia com muito carinho.</p>
       <div class="os-gal" id="sv-cestas"></div>
     </div>
 
-    <!-- Bloco 3: Homenagens -->
-    <div class="os-card" style="--bg-img: url('images/coroa.jpg');">
-      <div class="os-icon-box"><svg class="os-icon-svg"><use href="#i-ribbon"/></svg></div>
-      <h3>Homenagens & Coroas</h3>
-      <p>Atendimento prioritário, rápido e respeitoso com arranjos e coroas de flores para cerimônias.</p>
-      <div class="os-gal" id="sv-homenagens"></div>
+    <!-- Bloco 3: Buquês de Morangos -->
+    <div class="os-card" style="--bg-img: url('images/morangos.jpg');">
+      <div class="os-icon-box"><svg class="os-icon-svg"><use href="#i-heart"/></svg></div>
+      <h3>Buquês de Morangos</h3>
+      <p>Morangos frescos com chocolate, montados em buquê para presentear e emocionar.</p>
+      <div class="os-gal" id="sv-morangos"></div>
     </div>
   </div>
 
   <div class="os-footer-cta">
     <div class="os-cta-text">
       <strong>Precisa de um orçamento personalizado?</strong>
-      <span>Fale diretamente com nossa equipe via WhatsApp</span>
+      <span>Fale diretamente com a nossa equipe pelo WhatsApp</span>
     </div>
-    <a href="https://wa.me/5592991204691?text=Ol%C3%A1!%20Acessei%20o%20site%20da%20JC%20Flores%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20servi%C3%A7os%20especiais." target="_blank" rel="noopener" class="os-btn">
+    <a href="https://wa.me/559284439689?text=Ol%C3%A1!%20Acessei%20o%20site%20da%20JC%20Flores%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20pedido%20especial." target="_blank" rel="noopener" class="os-btn">
       <svg viewBox="0 0 24 24" width="22" height="22" style="color:#ffffff; margin-right:8px; vertical-align:middle;"><use href="#i-wa"/></svg>
-      Falar com a JC Flores
+      Falar com a Eu Quero Morango
     </a>
   </div>
 </section>
@@ -369,7 +436,7 @@
 <section class="rev rv" id="avaliacoes" hidden>
   <div class="rev-h">
     <h2 class="t" style="margin:0">O que nossos clientes dizem</h2>
-    <div class="gb" id="gb" aria-label="Avaliações de clientes da JC Flores"><span class="gl">★</span><span class="gt"><b>JC Flores</b><span class="gs-s" id="gs"></span><small>Avaliações de clientes</small></span></div>
+    <div class="gb" id="gb" aria-label="Avaliações de clientes da Eu Quero Morango"><span class="gl">★</span><span class="gt"><b>Eu Quero Morango</b><span class="gs-s" id="gs"></span><small>Avaliações de clientes</small></span></div>
   </div>
   <div class="rm" id="rm" aria-label="Avaliações de clientes no Google"><div class="rm-t" id="rt"></div></div>
 </section>
@@ -383,8 +450,8 @@
       <!-- 01 / QUEM SOMOS -->
       <div class="ct-about">
         <h3 class="ct-label">Quem Somos</h3>
-        <div class="logo logo-img" style="text-align:left;margin-bottom:16px"><img src="images/logo.jpg" alt="JC Flores Floricultura" width="96" height="96"></div>
-        <p>Floricultura e presentes em Manaus, com atendimento 24 horas. Flores frescas, arranjos feitos à mão, coroas e buquês de casamento. Nosso propósito é entregar carinho e emoção em cada detalhe, com agilidade e excelência.</p>
+        <div class="logo logo-img" style="text-align:left;margin-bottom:16px"><img src="images/logo.jpg" alt="Eu Quero Morango Floricultura" width="96" height="96"></div>
+        <p>Floricultura em Manaus com presentes que emocionam: buquês, buquê de morangos, cestas de café da manhã, lírios, girassóis, decorações e muito mais. Cada detalhe é feito com carinho para transformar o seu momento em uma lembrança especial.</p>
       </div>
 
 
@@ -392,26 +459,26 @@
       <div class="ct-contact">
         <h3 class="ct-label">Fale Conosco</h3>
         <div class="ct-cards">
-          <a href="https://wa.me/5592991204691" target="_blank" rel="noopener" class="ct-card wa-card">
+          <a href="https://wa.me/559284439689" target="_blank" rel="noopener" class="ct-card wa-card">
             <div class="ct-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><use href="#i-wa"/></svg></div>
-            <small>WHATSAPP 24 HORAS</small>
-            <b>(92) 99120-4691</b>
+            <small>WHATSAPP</small>
+            <b>(92) 8443-9689</b>
           </a>
           
-          <a href="tel:+5592991204691" class="ct-card">
+          <a href="tel:+559284439689" class="ct-card">
             <div class="ct-icon">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </div>
-            <small>TELEFONE / PLANTÃO</small>
-            <b>(92) 99120-4691</b>
+            <small>TELEFONE</small>
+            <b>(92) 8443-9689</b>
           </a>
 
-          <a href="https://instagram.com/jcfloresmanaus" target="_blank" rel="noopener" class="ct-card ig-card">
+          <a href="https://instagram.com/euqueromorango_" target="_blank" rel="noopener" class="ct-card ig-card">
             <div class="ct-icon">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
             </div>
             <small>INSTAGRAM</small>
-            <b>@jcfloresmanaus</b>
+            <b>@euqueromorango_</b>
           </a>
         </div>
       </div>
@@ -423,9 +490,9 @@
       
       <div class="ct-locations">
         <div class="ct-address-box" id="box-fl">
-          <div class="ct-address-header"><span class="ct-address-tag">LOJA · ABERTA 24 HORAS</span></div>
-          <h4>Manaus, Amazonas</h4>
-          <p>Av. Carvalho Leal<br>Bairro Cachoeirinha<br>Manaus – AM</p>
+          <div class="ct-address-header"><span class="ct-address-tag">LOJA · ENTREGA EM MANAUS</span></div>
+          <h4>Parque 10, Manaus</h4>
+          <p>Rua Furuoka, 02<br>Parque 10<br>Manaus – AM</p>
           <button type="button" class="ct-map-link" data-unidade="fl">Ver no mapa <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
         </div>
 </div>
@@ -443,11 +510,11 @@
 </main>
 
 <footer><div class="w"><div class="fg">
-<div><div class="brand brand-f"><span class="brand-n">JC Flores</span><span class="brand-s">Floricultura · 24h</span></div><p style="font-size:14px">Floricultura 24 horas em Manaus. Flores frescas e arranjos feitos à mão com carinho.</p></div>
-<div><h4>Comprar</h4><ul><li><a href="#loja" data-cat="Promoções">Promoções</a></li><li><a href="#loja" data-cat="Buquês">Buquês</a></li><li><a href="#outros-servicos">Serviços</a></li><li><a href="#loja" data-cat="Plantas">Plantas</a></li></ul></div>
-<div><h4>Atendimento</h4><ul><li>WhatsApp 24h</li><li>24 horas · todos os dias</li><li>Entregas e retiradas</li></ul></div>
+<div><div class="brand brand-f"><span class="brand-n">Eu Quero Morango</span><span class="brand-s">Floricultura · Manaus</span></div><p style="font-size:14px">Presentes que emocionam: buquês, buquê de morangos, cestas de café da manhã e decorações em Manaus.</p></div>
+<div><h4>Comprar</h4><ul><li><a href="#loja" data-cat="Promoções">Promoções</a></li><li><a href="#loja" data-cat="Buquê de Morangos">Buquê de Morangos</a></li><li><a href="#loja" data-cat="Cestas de Café">Cestas de Café</a></li><li><a href="#outros-servicos">Decorações</a></li></ul></div>
+<div><h4>Atendimento</h4><ul><li>WhatsApp</li><li>Entrega em Manaus</li><li>Entregas e retiradas</li></ul></div>
 <div><h4>Pagamento</h4><ul><li>Pix</li><li>Cartão parcelado</li><li>Dinheiro na entrega</li></ul></div>
-</div><div class="cp"><span>© 2026 JC Flores</span><span>Feito com carinho · <a href="#" id="adl">Área do lojista</a></span></div></div></footer>
+</div><div class="cp"><span>© 2026 Eu Quero Morango</span><span>Feito com carinho · <a href="#" id="adl">Área do lojista</a></span></div></div></footer>
 
 <div class="ov" id="ov"></div>
 <aside id="dr" aria-label="Carrinho" aria-hidden="true"><header><h3>Meu carrinho</h3><button class="x" id="xc" aria-label="Fechar">×</button></header>
@@ -465,7 +532,7 @@
 <input type="text" id="rNome" placeholder="Destinatário(a)">
 <input type="tel" id="rTel" placeholder="Contato do destinatário">
 <input type="text" id="rEnd" placeholder="Endereço">
-<select id="bn" aria-label="Bairro de entrega"></select>
+<input type="text" id="bn" placeholder="Bairro" aria-label="Bairro de entrega" list="bnl" autocomplete="off" autocapitalize="words"><datalist id="bnl"></datalist>
 <input type="text" id="rSet" placeholder="Local/setor (casa, apto, bloco, empresa…)">
 <input type="text" id="rRef" placeholder="Ponto de referência">
 <input type="text" id="rLoc" placeholder="Localização: cole o link do Google Maps (opcional)">
@@ -484,7 +551,7 @@
 <script>
 (function () {
   var MAPAS = {
-    fl: { t: 'JC Flores · Cachoeirinha', q: 'JC+Flores+Floricultura,+Av.+Carvalho+Leal,+Cachoeirinha,+Manaus' }
+    fl: { t: 'Eu Quero Morango · Parque 10', q: 'Eu+Quero+Morango,+Rua+Furuoka,+02,+Parque+10,+Manaus' }
   };
   var dlg = document.getElementById('mapa-dlg');
   var fr = document.getElementById('mapa-iframe');
