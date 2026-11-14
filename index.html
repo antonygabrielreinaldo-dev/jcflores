@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, viewport-fit=cover">
 <script>(function(){var d=document.documentElement;try{if(sessionStorage.getItem('jc-ld')){d.classList.add('ld-off');return}}catch(e){}d.classList.add('ld-lock','ld-wait')})()</script>
 <noscript><style>#ld{display:none!important}html.ld-lock{overflow:auto!important}html.ld-wait .jc-banner-copy>*{opacity:1!important;transform:none!important}</style></noscript>
 <title>Eu Quero Morango · Floricultura, Cestas e Buquês em Manaus</title>
@@ -13,8 +13,8 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="images/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css?v=20261114b">
+<script src="script.js?v=20261114b" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 <script src="logo3d.js" defer></script>
 <script src="admin.js" defer></script>
@@ -518,6 +518,7 @@
 
 <div class="ov" id="ov"></div>
 <aside id="dr" aria-label="Carrinho" aria-hidden="true"><header><h3>Meu carrinho</h3><button class="x" id="xc" aria-label="Fechar">×</button></header>
+<div class="dr-body">
 <div class="items" id="its"></div>
 <div class="foot" id="ft">
 <div class="up" id="up"></div>
@@ -541,9 +542,11 @@
 <textarea id="ob" rows="2" placeholder="Observação (opcional)"></textarea>
 <textarea id="msg" rows="2" placeholder="Mensagem do cartão (grátis, opcional)"></textarea>
 <div class="aviso"><p>É muito importante que os dados de entrega estejam corretos para evitar qualquer transtorno. Caso seja necessário alterar para novo endereço enquanto o pedido já estiver em rota, será cobrada uma nova taxa de entrega no valor de R$ 20,00, ou você pode retirar na loja.</p><p>Importante: alguém precisa estar no local para receber o produto dentro do horário da rota de entrega.</p></div>
+<div class="dr-sum">
 <div class="row"><span>Subtotal</span><span id="sb"></span></div><div class="row"><span>Frete</span><span id="fr"></span></div><div class="row" id="pfr" hidden><span>Taxa do link de pagamento</span><span>R$ 10,00</span></div>
 <div class="row tot"><span>Total</span><span id="tt"></span></div>
-<button class="wa" id="wa">Finalizar pelo WhatsApp</button></div></aside>
+<button class="wa" id="wa">Finalizar pelo WhatsApp</button>
+</div></div></div></aside>
 <dialog id="mapa-dlg" aria-labelledby="mapa-tit">
   <div class="mapa-h"><b id="mapa-tit">Mapa</b><button class="x" id="mapa-x" aria-label="Fechar mapa">×</button></div>
   <iframe id="mapa-iframe" src="about:blank" title="Mapa da unidade" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

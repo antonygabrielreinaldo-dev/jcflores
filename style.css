@@ -1540,16 +1540,6 @@ img, video, iframe, canvas { max-width: 100%; }
 }
 html.cart-open { overflow: hidden; }
 
-/* Conteúdo do carrinho: nada passa da largura da gaveta */
-#dr .items { min-width: 0; min-height: 90px; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
-#dr .foot {
-  grid-template-columns: minmax(0, 1fr);
-  overflow-x: hidden;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: calc(18px + env(safe-area-inset-bottom, 0px));
-}
 #dr .foot > * { min-width: 0; max-width: 100%; }
 #dr .foot input, #dr .foot select, #dr .foot textarea { width: 100%; min-width: 0; max-width: 100%; }
 #dr .foot select { text-overflow: ellipsis; }
@@ -1563,7 +1553,6 @@ html.cart-open { overflow: hidden; }
 }
 @media (max-width: 600px) {
   #dr { width: 100%; }
-  #dr .foot { max-height: 62vh; max-height: 62dvh; }
   dialog { width: 100%; max-width: 100%; }
 }
 
@@ -1584,3 +1573,52 @@ footer p, footer li, footer a { overflow-wrap: anywhere; }
 
 #bn::-webkit-calendar-picker-indicator { display: none !important; opacity: 0; }
 #bn { background-image: none; }
+
+/* ===== CARRINHO REFEITO: tudo numa rolagem só, sem vão entre produto e formulário ===== */
+#dr { height: 100vh; height: 100dvh; }
+#dr header { flex: none; border-bottom: 1px solid var(--line); padding: 14px 18px; }
+#dr .dr-body {
+  flex: 1 1 auto; min-height: 0;
+  display: flex; flex-direction: column;
+  overflow-y: auto; overflow-x: hidden;
+  overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+}
+#dr .items { flex: none; min-width: 0; overflow: visible; padding: 4px 18px 0; }
+#dr .items .ep { padding: 40px 10px; }
+#dr .foot {
+  flex: none; max-height: none; overflow: visible;
+  grid-template-columns: minmax(0, 1fr);
+  border-top: 0; padding: 12px 18px 0; gap: 10px;
+}
+#dr .items:not(:empty) + .foot { margin-top: 2px; }
+#dr .it { padding: 12px 0; }
+#dr .it > div { min-width: 0; }
+#dr .it small { display: block; margin-top: 2px; }
+#dr .it .q { margin-top: 8px; }
+#dr .it .rm { margin-top: 6px; }
+#dr .up { padding: 10px 12px; border: 1px solid var(--line); border-radius: 14px; background: var(--soft); }
+#dr .up-l { gap: 6px; }
+
+/* Resumo + botão: ficam sempre visíveis no rodapé do carrinho */
+#dr .dr-sum {
+  position: sticky; bottom: 0; z-index: 2;
+  display: grid; gap: 6px;
+  margin: 4px -18px 0;
+  padding: 12px 18px calc(12px + env(safe-area-inset-bottom, 0px));
+  background: var(--card);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -10px 18px -14px rgba(138, 22, 66, .35);
+}
+#dr .dr-sum .row { font-size: 13.5px; }
+#dr .dr-sum .row.tot { font-size: 1.15rem; }
+#dr .dr-sum .wa { margin-top: 4px; }
+
+/* resumo ocupa a largura toda; linhas com [hidden] realmente somem (o .row{display:flex} antigo as mostrava) */
+#dr .foot > .dr-sum { max-width: none; width: auto; }
+#dr [hidden] { display: none !important; }
+#dr .dr-sum { padding-top: 10px; gap: 5px; }
+#dr .dr-sum .wa { padding: 13px; }
+
+/* aviso (toast) no topo enquanto o carrinho está aberto, para não cobrir o botão */
+html.cart-open .toast { top: calc(72px + env(safe-area-inset-top, 0px)); bottom: auto; transform: translate(-50%, -220px); max-width: 90vw; text-align: center; }
+html.cart-open .toast.on { transform: translate(-50%, 0); }
