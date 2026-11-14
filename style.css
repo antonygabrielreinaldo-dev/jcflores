@@ -1566,3 +1566,21 @@ html.cart-open { overflow: hidden; }
   #dr .foot { max-height: 62vh; max-height: 62dvh; }
   dialog { width: 100%; max-width: 100%; }
 }
+
+/* ===== Rodapé: era ele que alargava a página no celular ===== */
+.fg > * { min-width: 0; }
+footer .brand { max-width: 100%; }
+footer .brand-n { font-size: clamp(1.2rem, 6vw, 1.9rem); letter-spacing: .14em; white-space: normal; overflow-wrap: anywhere; }
+footer .brand-s { white-space: normal; }
+footer p, footer li, footer a { overflow-wrap: anywhere; }
+.cp { flex-wrap: wrap; gap: 6px 14px; }
+@media (max-width: 760px) {
+  .fg { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fg > div:first-child { grid-column: 1 / -1; }
+}
+@media (max-width: 380px) {
+  .fg { grid-template-columns: minmax(0, 1fr); }
+}
+
+#bn::-webkit-calendar-picker-indicator { display: none !important; opacity: 0; }
+#bn { background-image: none; }
